@@ -1,15 +1,15 @@
-H5P.Column = (function (EventDispatcher) {
+H5P.Row = (function (EventDispatcher) {
 
   /**
-   * Column Constructor
+   * Row Constructor
    *
    * @class
    * @param {Object} params Describes task behavior
    * @param {number} id Content identifier
    * @param {Object} data User specific data to adapt behavior
    */
-  function Column(params, id, data) {
-    /** @alias H5P.Column# */
+  function Row(params, id, data) {
+    /** @alias H5P.Row# */
     var self = this;
 
     // We support events by extending this class
@@ -23,10 +23,10 @@ H5P.Column = (function (EventDispatcher) {
 
     this.contentData = data;
 
-    // Column wrapper element
+    // Row wrapper element
     var wrapper;
 
-    // H5P content in the column
+    // H5P content in the row
     var instances = [];
     var instanceContainers = [];
 
@@ -108,7 +108,7 @@ H5P.Column = (function (EventDispatcher) {
     var addRunnable = function (content, contentData) {
       // Create container for content
       var container = document.createElement('div');
-      container.classList.add('h5p-column-content');
+      container.classList.add('h5p-row-content');
 
       // Content overrides
       var library = content.library.split(' ')[0];
@@ -124,7 +124,7 @@ H5P.Column = (function (EventDispatcher) {
       bubbleUp(instance, 'resize', self);
 
       // Check if instance is a task
-      if (Column.isTask(instance)) {
+      if (Row.isTask(instance)) {
         // Tasks requires completion
 
         instance.on('xAPI', trackScoring(numTasks));
@@ -186,7 +186,7 @@ H5P.Column = (function (EventDispatcher) {
 
         // Create separator element
         var separator = document.createElement('div');
-        //separator.classList.add('h5p-column-ruler');
+        //separator.classList.add('h5p-row-ruler');
 
         // If no margins, check for top margin only
         if (!thisHasMargin && (hasTopMargins.indexOf(libraryName) === -1)) {
@@ -196,14 +196,14 @@ H5P.Column = (function (EventDispatcher) {
             // Only add separator if forced
             if (useSeparator === 'enabled') {
               // Add ruler
-              separator.classList.add('h5p-column-ruler');
+              separator.classList.add('h5p-row-ruler');
 
               // Add space both before and after the ruler
-              separator.classList.add('h5p-column-space-before-n-after');
+              separator.classList.add('h5p-row-space-before-n-after');
             }
             else {
               // Default is to separte using a single space, no ruler
-              separator.classList.add('h5p-column-space-before');
+              separator.classList.add('h5p-row-space-before');
             }
           }
           else {
@@ -212,10 +212,10 @@ H5P.Column = (function (EventDispatcher) {
             // Only add separator if forced
             if (useSeparator === 'enabled') {
               // Add ruler
-              separator.classList.add('h5p-column-ruler');
+              separator.classList.add('h5p-row-ruler');
 
               // Add space after the ruler
-              separator.classList.add('h5p-column-space-after');
+              separator.classList.add('h5p-row-space-after');
             }
           }
         }
@@ -225,10 +225,10 @@ H5P.Column = (function (EventDispatcher) {
           // Only add separator if forced
           if (useSeparator === 'enabled') {
             // Add ruler
-            separator.classList.add('h5p-column-ruler');
+            separator.classList.add('h5p-row-ruler');
 
             // Add space after the ruler
-            separator.classList.add('h5p-column-space-before');
+            separator.classList.add('h5p-row-space-before');
           }
         }
         else {
@@ -236,7 +236,7 @@ H5P.Column = (function (EventDispatcher) {
 
           if (useSeparator !== 'disabled') {
             // Default is to add ruler unless its disabled
-            separator.classList.add('h5p-column-ruler');
+            separator.classList.add('h5p-row-ruler');
           }
         }
 
@@ -249,7 +249,7 @@ H5P.Column = (function (EventDispatcher) {
     };
 
     /**
-     * Creates a wrapper and the column content the first time the column
+     * Creates a wrapper and the row content the first time the row
      * is attached to the DOM.
      *
      * @private
@@ -280,7 +280,7 @@ H5P.Column = (function (EventDispatcher) {
     };
 
     /**
-     * Attach the column to the given container
+     * Attach the row to the given container
      *
      * @param {H5P.jQuery} $container
      */
@@ -302,7 +302,7 @@ H5P.Column = (function (EventDispatcher) {
 
 
       // Add to DOM
-      $container.addClass('h5p-column').html('').append(wrapper);
+      $container.addClass('h5p-row').html('').append(wrapper);
     };
 
     /**
@@ -432,12 +432,12 @@ H5P.Column = (function (EventDispatcher) {
     };
 
     /**
-     * Get title, e.g. for xAPI when Column is subcontent.
+     * Get title, e.g. for xAPI when Row is subcontent.
      *
      * @return {string} Title.
      */
     self.getTitle = function () {
-      return H5P.createTitle((self.contentData && self.contentData.metadata && self.contentData.metadata.title) ? self.contentData.metadata.title : 'Column');
+      return H5P.createTitle((self.contentData && self.contentData.metadata && self.contentData.metadata.title) ? self.contentData.metadata.title : 'Row');
     };
 
     /**
@@ -491,8 +491,8 @@ H5P.Column = (function (EventDispatcher) {
     self.setActivityStarted();
   }
 
-  Column.prototype = Object.create(EventDispatcher.prototype);
-  Column.prototype.constructor = Column;
+  Row.prototype = Object.create(EventDispatcher.prototype);
+  Row.prototype.constructor = Row;
 
   /**
    * Makes it easy to bubble events from parent to children
@@ -562,7 +562,7 @@ H5P.Column = (function (EventDispatcher) {
    * @param {Object} instance
    * @return {boolean}
    */
-  Column.isTask = function (instance) {
+  Row.isTask = function (instance) {
     if (instance.isTask !== undefined) {
       return instance.isTask; // Content will determine self if it's a task
     }
@@ -644,5 +644,5 @@ H5P.Column = (function (EventDispatcher) {
     }
   }
 
-  return Column;
+  return Row;
 })(H5P.EventDispatcher);

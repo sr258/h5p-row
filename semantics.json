@@ -1,7 +1,7 @@
 [
   {
     "name": "content",
-    "label": "List of Column Content",
+    "label": "List of Row Content",
     "importance": "high",
     "type": "list",
     "min": 1,
@@ -23,6 +23,7 @@
             "H5P.Blanks 1.12",
             "H5P.Chart 1.2",
             "H5P.Collage 0.3",
+            "H5P.Column 1.11",
             "H5P.CoursePresentation 1.21",
             "H5P.Dialogcards 1.8",
             "H5P.DocumentationTool 1.8",
@@ -56,7 +57,7 @@
           "name": "useSeparator",
           "type": "select",
           "importance": "low",
-          "label": "Separate content with a horizontal ruler",
+          "label": "Separate content with a vertical ruler",
           "default": "auto",
           "options": [
             {
@@ -65,11 +66,11 @@
             },
             {
               "value": "disabled",
-              "label": "Never use ruler above"
+              "label": "Never use ruler to the left"
             },
             {
               "value": "enabled",
-              "label": "Always use ruler above"
+              "label": "Always use ruler to the left"
             }
           ]
         }

@@ -1,7 +1,7 @@
 {
-  "machineName": "H5P.Column",
-  "title": "Column",
-  "description": "Content holder displaying content in a column.",
+  "machineName": "H5P.Row",
+  "title": "Row",
+  "description": "Content holder displaying content in a row.",
   "contentType": "instructional",
   "license": "MIT",
   "author": "Joubel",
@@ -19,12 +19,12 @@
   },
   "preloadedJs": [
     {
-      "path": "scripts/h5p-column.js"
+      "path": "scripts/h5p-row.js"
     }
   ],
   "preloadedCss": [
     {
-      "path": "styles/h5p-column.css"
+      "path": "styles/h5p-row.css"
     }
   ]
 }

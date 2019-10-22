@@ -1,16 +1,16 @@
 var H5PPresave = H5PPresave || {};
 
 /**
- * Resolve the presave logic for the content type Column
+ * Resolve the presave logic for the content type Row
  *
  * @param {object} content
  * @param finished
  * @constructor
  */
-H5PPresave['H5P.Column'] = function (content, finished) {
+H5PPresave['H5P.Row'] = function (content, finished) {
   var presave = H5PEditor.Presave;
   if (isContentInvalid()) {
-    throw new presave.exceptions.InvalidContentSemanticsException('Invalid Column Error');
+    throw new presave.exceptions.InvalidContentSemanticsException('Invalid Row Error');
   }
 
   var score = content.content

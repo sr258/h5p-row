@@ -1,7 +1,9 @@
-H5P Column
+H5P Row
 ==========
 
-Display a list of content in a column format, each one below the next one.
+Display a list of content in a row format, each one below the next one.
+
+A fork of Joubel's Column content type.
 
 ## License
 
