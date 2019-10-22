@@ -87,7 +87,7 @@
   display: none;
 }
 
-.h5p-row div {
+.h5p-row>div {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
